@@ -1,0 +1,32 @@
+[
+    {
+        "model": "E350",
+        "brand": "Mercedes",
+        "year": 2016,
+        "seats": 5,
+        "new": false,
+        "price": 22000,
+        "color": "black",
+        "image": "https://static.cargurus.com/images/forsale/2019/11/23/05/05/2016_mercedes-benz_e-class-pic-8413242321766802878-1024x768.jpeg"
+    },
+    {
+        "model": "E400",
+        "brand": "Mercedes",
+        "year": 2017,
+        "seats": 4,
+        "new": false,
+        "price": 41000,
+        "color": "black",
+        "image": "https://static.cargurus.com/images/forsale/2019/12/03/14/50/2017_mercedes-benz_e-class-pic-4746516698591817037-1024x768.jpeg"
+    },
+    {
+        "model": "G55",
+        "brand": "Mercedes",
+        "year": 2009,
+        "seats": 5,
+        "new": false,
+        "price": 51000,
+        "color": "black",
+        "image": "https://static.cargurus.com/images/forsale/2019/08/19/08/56/2009_mercedes-benz_g-class-pic-5108073348537091074-1024x768.jpeg"
+    }
+]

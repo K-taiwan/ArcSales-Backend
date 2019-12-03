@@ -24,14 +24,13 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// Express Session - Authentication
+// Express Session 
 
 app.use(session({
-  // Store session in DB
   store: new MongoStore({ url: process.env.MONGO_URI }),
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false, // Only create session if a propery has been added to session,
+  saveUninitialized: false, 
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7 * 2,  // Expire at 2 weeks
   }

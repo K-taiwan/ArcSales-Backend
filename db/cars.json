@@ -28,5 +28,106 @@
         "price": 51000,
         "color": "black",
         "image": "https://static.cargurus.com/images/forsale/2019/08/19/08/56/2009_mercedes-benz_g-class-pic-5108073348537091074-1024x768.jpeg"
-    }
+    },
+    {
+        "model": "SLS",
+        "brand": "Mercedes",
+        "year": 2012,
+        "seats": 5,
+        "new": false,
+        "price": 159000,
+        "color": "white",
+        "image": "https://static.cargurus.com/images/forsale/2019/10/15/07/19/2012_mercedes-benz_sls-class-pic-1674382053983127594-1024x768.jpeg"
+    },
+    {
+        "model": "AMG  GT63",
+        "brand": "Mercedes",
+        "year": 2020,
+        "seats": 5,
+        "new": new,
+        "price": 172000,
+        "color": "grey",
+        "image": "https://static.cargurus.com/images/forsale/2019/12/03/08/36/2020_mercedes-benz_amg_gt-pic-8679196710934370969-1024x768.jpeg"
+    },
+    {
+        "model": "Charger SRT Hellcat",
+        "brand": "Dodge",
+        "year": 2019,
+        "seats": 4,
+        "new": new,
+        "price": 61000,
+        "color": "blue pearl",
+        "image": "https://static.cargurus.com/images/forsale/2019/11/13/11/41/2019_dodge_charger-pic-3361563223768970483-1024x768.jpeg"
+    },
+     {
+        "model": "Challenger SRT Hellcat",
+        "brand": "Dodge",
+        "year": 2019,
+        "seats": 4,
+        "new": new,
+        "price": 76000,
+        "color": "gray clearcoat",
+        "image": "https://static.cargurus.com/images/forsale/2019/11/21/16/02/2019_dodge_challenger-pic-8265824832320737290-1024x768.jpeg"
+    },
+    {
+        "model": "R8 quattro Spyder",
+        "brand": "Audi",
+        "year": 2020,
+        "seats": 2,
+        "new": new,
+        "price": 226000,
+        "color": "ibis white/black roof",
+        "image": "https://static.cargurus.com/images/forsale/2019/09/08/18/32/2020_audi_r8-pic-207510890812704317-1024x768.jpeg"
+    },
+    {
+        "model": "Lancer Evolution VIII",
+        "brand": "Mitsubishi",
+        "year": 2003,
+        "seats": 5,
+        "new": used,
+        "price": 21000,
+        "color": "yellow",
+        "image": "https://static.cargurus.com/images/forsale/2019/11/19/13/28/2003_mitsubishi_lancer_evolution_viii-pic-933700923634622463-1024x768.jpeg"
+    },
+    {
+        "model": "S3 2.0T quattro Premium Plus",
+        "brand": "Audi",
+        "year": 2016,
+        "seats": 5,
+        "new": used,
+        "price": 27000,
+        "color": "red",
+        "image": "https://static.cargurus.com/images/forsale/2019/07/16/17/48/2016_audi_s3-pic-3711353862302614049-1024x768.jpeg"
+    },
+    {
+        "model": "Prius v Five FWD",
+        "brand": "Toyota",
+        "year": 2017,
+        "seats": 5,
+        "new": used,
+        "price": 18000,
+        "color": "green",
+        "image": "https://static.cargurus.com/images/forsale/2019/10/08/04/04/2017_toyota_prius_v-pic-8668176383745189160-1024x768.jpeg"
+    },
+    {
+        "model": "M3 Coupe RWD",
+        "brand": "BMW",
+        "year": 2002,
+        "seats": 5,
+        "new": used,
+        "price": 25000,
+        "color": "grey",
+        "image": "https://static.cargurus.com/images/forsale/2019/11/01/12/35/2002_bmw_m3_coupe_rwd-pic-7220740772260904184-1024x768.jpeg"
+    },
+    {
+        "model": "Civic CRX Si",
+        "brand": "Honda",
+        "year": 1990,
+        "seats": 4,
+        "new": used,
+        "price": 3200,
+        "color": "blackc",
+        "image": "https://static.cargurus.com/images/forsale/2019/09/18/14/34/1990_honda_civic_crx_crx_si-pic-6803598401325909422-1024x768.jpeg"
+    },
+    
 ]

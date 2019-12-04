@@ -34,6 +34,14 @@ const CarSchema = new Schema({
         type: String,
         require: [true, 'Image is required'],
     },
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    transactions: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
+    }]
 })
 
 const Car = mongoose.model('Car', CarSchema);

@@ -3,7 +3,7 @@ const db = require('../models');
 
 //Register- Create New User
 const register = (req, res) => {
-    if(!req.body.name || !req.body.email || !req.body.password) {
+    if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
         return res.status(400).json({
             status: 400, 
             message: 'Please enter your name, email, and password'
@@ -17,7 +17,7 @@ const register = (req, res) => {
         });
         if (foundUser) return res.status(400).json({
             status: 400,
-            message: 'Woops! Please Try Again!'
+            message: 'Woops! Error Please Try Again!'
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -33,8 +33,8 @@ const register = (req, res) => {
                 message: 'Woops! Please Try Again!'
             });
             const newUser = {
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email,
                 password: hash,
             }
@@ -44,7 +44,12 @@ const register = (req, res) => {
                     status: 500, 
                     message: err
                 });
-                res.sendStatus(201);
+                req.session.currentUser = { id: savedUser._id };
+                return res.sendStatus(201).json({
+                    status: 201,
+                    data: savedUser._id,
+                    message: 'sucessful'
+                });
             });
         });
     });

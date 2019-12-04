@@ -16,17 +16,20 @@ const UserSchema = new Schema({
       unique: true,
     },
     password: {
-      type: String,
+      type: Number,
       required: [true, 'Password is required'],
     }, 
     description: {
       type: String,
-      required: [false],
     }, 
     joinDate: {
       type: Date,
       default: Date.now
     },
+    transactions: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Transaction'
+    }]
 });
 
 const User = mongoose.model('User', UserSchema);

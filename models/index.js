@@ -15,5 +15,7 @@ mongoose.connect(dbUrl, {
 module.exports = {
     User: require('./User'),
     Car: require('./Car'),
-    PostCar: require('./PostCar'),
+    Transaction: require('./Transaction'),
 };
+
+// PostCar: require('./PostCar'),

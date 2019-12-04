@@ -39,7 +39,7 @@ app.use(session({
 // ----------------------------------- Routes ----------------------------------- //
 
 app.get('/', (req, res) => {
-  res.send('<h1>AUTH API</h1>');
+  res.send('<h1>ArcSales</h1>');
 });
 
 app.use('/api/v1/auth', routes.auth);

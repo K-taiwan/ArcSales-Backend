@@ -4,10 +4,11 @@ const ctrl = require('../controllers')
 
 //PATH = /api/v1/users
 
-router.get('/:id', ctrl.users.show);
 //GET Profile by ID
-router.get('/findById/:id', ctrl.users.show);
+router.get('/:id', ctrl.users.showUser);
 //PUT Update Profile
-// router.put('/:id/update', ctrl.users.update);
+router.put('/:id', ctrl.users.updateUser);
+//Delete
+router.delete('/:id', ctrl.users.deleteUser);
 
 module.exports = router;

@@ -20,6 +20,12 @@ const register = (req, res) => {
             message: 'Woops! Please Try Again!'
         });
 
+        bcrypt.genSalt(10, (err, salt) => {
+            if(err) return res.status(500).json({
+                status: 500,
+                message: 'Whoops! Please Try Again!'
+            })
+        })
         //Hasing the User Password
         bcrypt.hash(req.body.password, salt, (err, hash) => {
             if (err) return res.status(500).json({
@@ -27,8 +33,8 @@ const register = (req, res) => {
                 message: 'Woops! Please Try Again!'
             });
             const newUser = {
-                firstname = req.body.firstname,
-                lastname = req.body.lastname,
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
                 email: req.body.email,
                 password: hash,
             }
@@ -74,7 +80,7 @@ const login = (req, res) => {
                     status: 200,
                     message: 'Success',
                     data: foundUser._id
-                })
+                });
             } else {
                 return res.status(400).json({
                     status: 400,

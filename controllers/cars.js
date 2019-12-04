@@ -1,17 +1,17 @@
 const db = require('../models');
 
 const addCar = (req, res) => {
-    db.Car.create(req.body, (err, createCar) => {
+    db.Car.create(req.body, (err, createdCar) => {
         if (err) return console.log(err);
         res.json({
             status: 201,
-            data: createdCity,
+            data: createdCar,
         })
     });
 }
 
 const showAllCars = (req, res) => {
-    db.Car.find({}, (err, allCars) => {
+    db.Car.findAll({}, (err, allCars) => {
         if(err) return res.status(500).json({
             status: 500,
             message: err
@@ -26,4 +26,6 @@ const showAllCars = (req, res) => {
 module.exports = {
     addCar,
     showAllCars,
+    // updateCar,
+    // destroyCar,
 }

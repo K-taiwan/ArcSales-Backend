@@ -7,6 +7,11 @@ const ctrl = require('../controllers');
 //Get all Cars
 router.get('/all', ctrl.cars.showAllCars);
 
+//show user cars
+// TODO: fix showUserCars function - needs to referenced AUTHENTICATED USER
+// TODO: remove param from this route
+router.get('/:id', ctrl.cars.showUserCars);
+
 //Add new car
 router.post('/new', ctrl.cars.addCar);
 

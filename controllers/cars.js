@@ -23,6 +23,22 @@ const showAllCars = (req, res) => {
     });
 }
 
+const showUserCars = (req, res) => {
+    // console.log(req.session.currentUser);
+    // db.Car.find({ users: { $in:  req.session.currentUser }}
+    db.Car.find({ users: { $in: req.params.id }}, (err, allCars) => {
+        if(err) return res.status(500).json({
+            status: 500,
+            message: err
+        });
+        res.status(200).json({
+            status: 200,
+            data: allCars
+        });
+    });
+}
+
+
 //updating the car post
 const updateCar = (req, res) => {
     db.Car.findByIdAndUpdate(req.params.id, req.body, (err, updatedCar) => {
@@ -48,6 +64,7 @@ const destroyCar = (req, res) => {
 module.exports = {
     addCar,
     showAllCars,
+    showUserCars,
     updateCar,
     destroyCar,
 }

@@ -6,14 +6,14 @@ const TransactionSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    users: [{
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
-    cars: [{
+    },
+    car: {
         type: Schema.Types.ObjectId,
         ref: 'Car'
-    }],
+    },
 
 });
 

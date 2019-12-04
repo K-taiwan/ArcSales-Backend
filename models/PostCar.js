@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CarSchema = new Schema({
+const PostCarSchema = new Schema({
     model: {
         type: String,
         require: [true, 'Model name is required'],
@@ -36,6 +36,6 @@ const CarSchema = new Schema({
     },
 })
 
-const Car = mongoose.model('Car', CarSchema);
+const PostCar = mongoose.model('PostCar', PostCarSchema);
 
-module.exports = Car;
+module.exports = PostCar;

@@ -23,9 +23,31 @@ const showAllCars = (req, res) => {
     });
 }
 
+//updating the car post
+const updateCar = (req, res) => {
+    db.Car.findByIdAndUpdate(req.params.id, req.body, (err, updatedCar) => {
+        if(err) return console.log(err);
+        res.json({
+            status: 201,
+            data: updatedCar
+        });
+    });
+};
+
+//delete the car
+const destroyCar = (req, res) => {
+    db.Car.findByIdAndDelete(req.params.id, (err, deletedCar) => {
+        if(err) return console.log(err);
+        res.json({
+            status: 200,
+            data: deletedCar
+        });
+    });
+};
+
 module.exports = {
     addCar,
     showAllCars,
-    // updateCar,
-    // destroyCar,
+    updateCar,
+    destroyCar,
 }

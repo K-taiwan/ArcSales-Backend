@@ -4,8 +4,12 @@ const ctrl = require('../controllers')
 
 //PATH = /api/v1/users
 
+//add users
+router.post('/:id', ctrl.users.addUser);
 //GET Profile by ID
 router.get('/:id', ctrl.users.showUser);
+//Show all users
+router.get('/', ctrl.users.showAllUsers);
 //PUT Update Profile
 router.put('/:id', ctrl.users.updateUser);
 //Delete

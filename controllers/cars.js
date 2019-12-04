@@ -11,7 +11,7 @@ const addCar = (req, res) => {
 }
 
 const showAllCars = (req, res) => {
-    db.Car.findAll({}, (err, allCars) => {
+    db.Car.find({}, (err, allCars) => {
         if(err) return res.status(500).json({
             status: 500,
             message: err

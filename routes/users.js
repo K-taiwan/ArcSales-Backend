@@ -11,7 +11,7 @@ router.get('/:userId', ctrl.users.showUser);
 //Show all users
 router.get('/', ctrl.users.showAllUsers);
 //PUT Update Profile
-// router.put('/:userId', ctrl.users.updateUser);
+router.put('/:userId', ctrl.users.updateUser);
 //Delete
 router.delete('/:userId', ctrl.users.deleteUser);
 

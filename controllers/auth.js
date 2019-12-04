@@ -20,14 +20,15 @@ const register = (req, res) => {
             message: 'Woops! Error Please Try Again!'
         });
 
-        bcrypt.genSalt(10, (err, salt) => {
-            if(err) return res.status(500).json({
-                status: 500,
-                message: 'Whoops! Please Try Again!'
-            })
-        })
+        // bcrypt.genSalt(10, (err, salt) => {
+        //     if(err) return res.status(500).json({
+        //         status: 500,
+        //         message: 'Whoops! Please Try Again!'
+        //     })
+        // })
         //Hasing the User Password
-        bcrypt.hash(req.body.password, salt, (err, hash) => {
+        bcrypt.hash(req.body.password, 10, (err, hash) => {
+            console.log(err)
             if (err) return res.status(500).json({
                 status: 500, 
                 message: 'Woops! Please Try Again!'
@@ -44,11 +45,10 @@ const register = (req, res) => {
                     status: 500, 
                     message: err
                 });
-                req.session.currentUser = { id: savedUser._id };
-                return res.sendStatus(201).json({
+                res.status(201).json({
                     status: 201,
-                    data: savedUser._id,
-                    message: 'sucessful'
+                    message: 'sucessful',
+                    user: savedUser
                 });
             });
         });
@@ -80,7 +80,7 @@ const login = (req, res) => {
                 message: 'Please Try Again!'
             });
             if (isMatch) {
-                req.session.currentUser = { id: foundUser_.id };
+                req.session.currentUser = { id: foundUser._id };
                 return res.status(200).json({
                     status: 200,
                     message: 'Success',
@@ -113,38 +113,39 @@ const logout = (req, res) => {
 };
 
 // Get Verified
-const verify = (req, res) => {
-    if(!req.session.currentUser) return res.status(401).json({
-        status: 401,
-        message: 'Unauthorized'
-    });
-    res.status(200).json({
-        status: 200,
-        message: `Current User Verified. User ID: ${req.session.currentUser.id}`
-    });
-};
+// const verify = (req, res) => {
+//     if(!req.session.currentUser) return res.status(401).json({
+//         status: 401,
+//         message: 'Unauthorized'
+//     });
+//     res.status(200).json({
+//         status: 200,
+//         message: `Current User Verified. User ID: ${req.session.currentUser.id}`
+//     });
+// };
 
 //Update
-const updateProfile = (req, res) => {
-    db.User.findByIdAndUpdate(req.params.uid, req.body, {new: true}, (error, updatedProfile) => {
-        if(error) return res.status(401).json({
-            status: 401,
-            message: 'Could not update, Please Try Again!'
-        });
-        res.status(200).json({
-            status: 200,
-            message: 'Show Profile',
-            requestedAt: new Date().toLocaleString(),
-            count: updatedProfile.length,
-            data: updatedProfile
-        });
-    });
-};
+// const updateProfile = (req, res) => {
+//     db.User.findByIdAndUpdate(req.params.uid, req.body, {new: true}, (error, updatedProfile) => {
+//         if(error) return res.status(401).json({
+//             status: 401,
+//             message: 'Could not update, Please Try Again!'
+//         });
+//         res.status(200).json({
+//             status: 200,
+//             message: 'Show Profile',
+//             requestedAt: new Date().toLocaleString(),
+//             count: updatedProfile.length,
+//             data: updatedProfile
+//         });
+//     });
+// };
 
 module.exports = {
     register,
     login,
-    verify,
     logout,
-    updateProfile,
 };
+
+ // verify,
+    // updateProfile,

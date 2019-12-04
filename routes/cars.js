@@ -11,9 +11,9 @@ router.get('/all', ctrl.cars.showAllCars);
 router.post('/new', ctrl.cars.addCar);
 
 //Update
-// router.put('/:id', ctrl.cars.updateCar);
+router.put('/:id', ctrl.cars.updateCar);
 
 //Delete
-// router.delete('/:id', ctrl.cars.destroyCar);
+router.delete('/:id', ctrl.cars.destroyCar);
 
 module.exports = router;

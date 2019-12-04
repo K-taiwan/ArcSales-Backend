@@ -47,26 +47,26 @@ const showAllUsers = (req, res) => {
 }
 
 //Update One Current User
-// const updateUser = (req, res) => {
-//     if(!req.session.currentUser) return res.status(401).json({
-//         status: 401,
-//         message: 'Pleast Try Again!'
-//     });
-//     db.User.findByIdAndUpdate(req.params.userId, (err, foundUser) => {
-//         if(err) return res.status(401).json({
-//             status: 401,
-//             message: 'Pleast Try Again!'
-//         });
+const updateUser = (req, res) => {
+    if(!req.session.currentUser) return res.status(401).json({
+        status: 401,
+        message: 'Pleast Try Again!'
+    });
+    db.User.findByIdAndUpdate(req.params.userId, (err, foundUser) => {
+        if(err) return res.status(401).json({
+            status: 401,
+            message: 'Pleast Try Again!'
+        });
         
-//         foundUser.save((err, updatedUser) => {
-//             if(err) console.log(err);
-//         })
-//         res.json({
-//             status: 201,
-//             message: foundUser
-//         });
-//     });
-// };
+        foundUser.save((err, updatedUser) => {
+            if(err) console.log(err);
+        })
+        res.json({
+            status: 201,
+            message: foundUser
+        });
+    });
+};
 
 //Delete Current User
 const deleteUser = (req, res) => {
@@ -83,6 +83,6 @@ module.exports = {
     addUser,
     showUser,
     showAllUsers,
-    // updateUser,
+    updateUser,
     deleteUser,
 }

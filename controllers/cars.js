@@ -16,19 +16,21 @@ const db = require('../models');
 
 
 const createCar = (req, res) => {
-    req.body.user = req.session.currentUser.id;
-    db.Car.create(req.body, (err, createdCar) => {
+    // req.body.user = req.session.currentUser.id;
+    const userData = {...req.body, user: req.session.currentUser.uid};
+    db.Car.create(userData, (err, createdCar) => {
+        console.log(err)
         if(err) return res.status(500).json({
             status: 500,
-            message: err
+            message: "hello"
         });
         res.status(201).json({
             status: 201,
             message: 'success',
             data: createdCar
-        })
+        });
     });
-}
+};
 
 const getCar = (req, res) => {
     db.Car.find({user: req.params.uid})
@@ -42,10 +44,9 @@ const getCar = (req, res) => {
             status: 201,
             message: 'success',
             data: gotCar
-        })
+        });
     });
-
-}
+};
 
 const showAllCars = (req, res) => {
     db.Car.find({}, (err, allCars) => {
@@ -58,7 +59,7 @@ const showAllCars = (req, res) => {
             data: allCars
         });
     });
-}
+};
 
 const showUserCars = (req, res) => {
     // console.log(req.session.currentUser);
@@ -75,7 +76,7 @@ const showUserCars = (req, res) => {
             data: allCars
         });
     });
-}
+};
 
 
 //updating the car post

@@ -16,10 +16,12 @@ const CarSchema = new Schema({
     },
     seats: {
         type: Number,
+        
         // require: [true, 'Seats is required'],
     },
     new: {
         type: Boolean,
+        default: false
         // require: [true, 'New=True or Used=False is required'],
     },
     price: {

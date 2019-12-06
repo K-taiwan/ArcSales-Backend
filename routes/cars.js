@@ -14,7 +14,7 @@ router.get('/get/:uid', ctrl.cars.getCar);
 router.get('/:uid', ctrl.cars.showUserCars);
 
 //Add new car
-router.post('/new/:uid', ctrl.cars.createCar);
+router.post('/new', ctrl.cars.createCar);
 // router.post('/new/:uid', ctrl.cars.addCar);
 // router.post('/create', ctrl.cars.createCar);
 

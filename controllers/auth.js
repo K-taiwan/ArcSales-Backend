@@ -16,43 +16,46 @@ const register = (req, res) => {
             status: 500,
             message: 'Woops! Please Try Again!'
         });
+        
         if (foundUser) return res.status(400).json({
             status: 400,
             message: 'Woops! Error Please Try Again!'
         });
 
-        // bcrypt.genSalt(10, (err, salt) => {
-        //     if(err) return res.status(500).json({
-        //         status: 500,
-        //         message: 'Whoops! Please Try Again!'
-        //     })
-        // })
-        //Hasing the User Password
-        bcrypt.hash(req.body.password, 10, (err, hash) => {
-            console.log(err)
-            if (err) return res.status(500).json({
-                status: 500, 
-                message: 'Woops! Please Try Again!'
-            });
-            const newUser = {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: hash,
-            }
+        bcrypt.genSalt(10, (err, salt) => {
+            if(err) return res.status(500).json({
+                status: 500,
+                message: 'Whoops! Please Try Again!'
+            })
 
-            db.User.create(newUser, (err, savedUser) => {
+            //Hasing the User Password
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+                console.log(hash)
                 if (err) return res.status(500).json({
                     status: 500, 
-                    message: err
+                    message: 'Woops! Please Try Again!'
                 });
-                res.status(201).json({
-                    status: 201,
-                    message: 'sucessful',
-                    user: savedUser
+                const newUser = {
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: hash,
+                }
+
+                db.User.create(newUser, (err, savedUser) => {
+                    if (err) return res.status(500).json({
+                        status: 500, 
+                        message: err
+                    });
+                    res.status(201).json({
+                        status: 201,
+                        message: 'sucessful',
+                        user: savedUser
+                    });
                 });
             });
-        });
+        })
+        
     });
 };
 
@@ -75,6 +78,7 @@ const login = (req, res) => {
                 message: 'Email or Password is incorrect! Please Try Again!'
             });
         }
+        console.log(foundUser)
         bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
             if (err) return res.status(500).json({
                 status:500, 

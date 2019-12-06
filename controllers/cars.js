@@ -1,13 +1,50 @@
 const db = require('../models');
 
-const addCar = (req, res) => {
+// const addCar = (req, res) => {
+//     db.Car.create(req.body, (err, createdCar) => {
+//         if(err) return res.status(500).json({
+//             status: 500,
+//             message: err
+//         });
+//         res.status(201).json({
+//             status: 201,
+//             message: 'success',
+//             data: createdCar
+//         })
+//     });
+// }
+
+
+const createCar = (req, res) => {
+    req.body.user = req.session.currentUser.id;
     db.Car.create(req.body, (err, createdCar) => {
-        if (err) return console.log(err);
-        res.json({
+        if(err) return res.status(500).json({
+            status: 500,
+            message: err
+        });
+        res.status(201).json({
             status: 201,
-            data: createdCar,
+            message: 'success',
+            data: createdCar
         })
     });
+}
+
+const getCar = (req, res) => {
+    db.Car.find({user: req.params.uid})
+    .populate('user')
+    .exec((err, gotCar) => {
+        if(err) return res.status(500).json({
+            status: 500,
+            message: err
+        });
+        return res.status(201).json({
+            status: 201,
+            message: 'success',
+            data: gotCar
+        })
+    });
+
 }
 
 const showAllCars = (req, res) => {
@@ -26,7 +63,9 @@ const showAllCars = (req, res) => {
 const showUserCars = (req, res) => {
     // console.log(req.session.currentUser);
     // db.Car.find({ users: { $in:  req.session.currentUser }}
-    db.Car.find({ users: { $in: req.params.id }}, (err, allCars) => {
+    db.Car.find({ user: req.params.uid})
+        .populate('user')
+        .exec((err, allCars) => {
         if(err) return res.status(500).json({
             status: 500,
             message: err
@@ -62,7 +101,9 @@ const destroyCar = (req, res) => {
 };
 
 module.exports = {
-    addCar,
+    // addCar,
+    createCar,
+    getCar,
     showAllCars,
     showUserCars,
     updateCar,

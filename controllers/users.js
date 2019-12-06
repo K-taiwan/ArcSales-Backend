@@ -52,7 +52,7 @@ const updateUser = (req, res) => {
         status: 401,
         message: 'Pleast Try Again!'
     });
-    db.User.findByIdAndUpdate(req.params.userId, (err, foundUser) => {
+    db.User.findByIdAndUpdate(req.params.userId, req.body, { new: true }, (err, foundUser) => {
         if(err) return res.status(401).json({
             status: 401,
             message: 'Pleast Try Again!'

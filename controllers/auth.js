@@ -3,7 +3,8 @@ const db = require('../models');
 
 //Register- Create New User
 const register = (req, res) => {
-    if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
+    console.log(req.body.firstName);
+    if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
         return res.status(400).json({
             status: 400, 
             message: 'Please enter your name, email, and password'

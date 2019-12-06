@@ -10,10 +10,14 @@ router.get('/all', ctrl.cars.showAllCars);
 //show user cars
 // TODO: fix showUserCars function - needs to referenced AUTHENTICATED USER
 // TODO: remove param from this route
-router.get('/:id', ctrl.cars.showUserCars);
+router.get('/get/:uid', ctrl.cars.getCar);
+router.get('/:uid', ctrl.cars.showUserCars);
 
 //Add new car
-router.post('/new', ctrl.cars.addCar);
+router.post('/new/:uid', ctrl.cars.createCar);
+// router.post('/new/:uid', ctrl.cars.addCar);
+// router.post('/create', ctrl.cars.createCar);
+
 
 //Update
 router.put('/:id', ctrl.cars.updateCar);

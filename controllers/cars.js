@@ -17,9 +17,11 @@ const db = require('../models');
 
 const createCar = (req, res) => {
     // req.body.user = req.session.currentUser.id;
-    const userData = {...req.body, user: req.session.currentUser.uid};
-    db.Car.create(userData, (err, createdCar) => {
-        console.log(err)
+    
+    
+    
+    db.Car.create(req.body, (err, createdCar) => {
+        console.log(createdCar)
         if(err) return res.status(500).json({
             status: 500,
             message: "hello"
@@ -32,21 +34,32 @@ const createCar = (req, res) => {
     });
 };
 
-const getCar = (req, res) => {
-    db.Car.find({user: req.params.uid})
-    .populate('user')
-    .exec((err, gotCar) => {
-        if(err) return res.status(500).json({
-            status: 500,
-            message: err
-        });
-        return res.status(201).json({
-            status: 201,
-            message: 'success',
-            data: gotCar
-        });
-    });
-};
+// const getCar = (req, res) => {
+//     db.Car.find({user: req.params.uid})
+//     .populate('user')
+//     .exec((err, gotCar) => {
+//         console.log(gotCar)
+//         if(err) return res.status(500).json({
+//             status: 500,
+//             message: err
+//         });
+//         console.log(gotCar)
+//         return res.status(201).json({
+//             status: 201,
+//             message: 'success',
+//             data: gotCar
+//         });
+//     });
+// };
+
+const getCar = async (req, res) => {
+    try {
+        const foundCar = await db.Car.find({ user: req.params.uid }).populate("user");
+        res.json({ status: 200, data: foundCar});
+    } catch (err) {
+        return res.status(500).json({ error: "Counld not found" });
+    }
+}
 
 const showAllCars = (req, res) => {
     db.Car.find({}, (err, allCars) => {

@@ -15,25 +15,6 @@ const db = require('../models');
 // }
 
 
-const createCar = (req, res) => {
-    // req.body.user = req.session.currentUser.id;
-    
-    
-    
-    db.Car.create(req.body, (err, createdCar) => {
-        console.log(createdCar)
-        if(err) return res.status(500).json({
-            status: 500,
-            message: "hello"
-        });
-        res.status(201).json({
-            status: 201,
-            message: 'success',
-            data: createdCar
-        });
-    });
-};
-
 // const getCar = (req, res) => {
 //     db.Car.find({user: req.params.uid})
 //     .populate('user')
@@ -51,6 +32,24 @@ const createCar = (req, res) => {
 //         });
 //     });
 // };
+
+///////////////////////////////////////////////// grab 
+const createCar = (req, res) => {
+    // req.body.user = req.session.currentUser.id;
+    db.Car.create(req.body, (err, createdCar) => {
+        console.log(createdCar)
+        if(err) return res.status(500).json({
+            status: 500,
+            message: "hello"
+        });
+        res.status(201).json({
+            status: 201,
+            message: 'success',
+            data: createdCar
+        });
+    });
+};
+
 
 const getCar = async (req, res) => {
     try {
@@ -113,6 +112,11 @@ const destroyCar = (req, res) => {
         });
     });
 };
+
+
+
+
+  
 
 module.exports = {
     // addCar,

@@ -70,11 +70,12 @@ const updateUser = (req, res) => {
 
 //Delete Current User
 const deleteUser = (req, res) => {
-    db.User.deleteOne({ User: req.params.user }, (err) => {
-        if(err) return console.log(err);
+    db.User.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
+        if (err) console.log(err);
         res.json({
-            status: 200,
-            message: 'Being Processed'
+          status: 200, 
+          data: deletedUser,
+          requestedAt: new Date().toLocaleString()
         });
     });
 };

@@ -52,7 +52,7 @@ const updateUser = (req, res) => {
         status: 401,
         message: 'Pleast Try Again!'
     });
-    db.User.findByIdAndUpdate(req.params.userId, (err, foundUser) => {
+    db.User.findByIdAndUpdate(req.params.userId, req.body, { new: true }, (err, foundUser) => {
         if(err) return res.status(401).json({
             status: 401,
             message: 'Pleast Try Again!'
@@ -70,11 +70,12 @@ const updateUser = (req, res) => {
 
 //Delete Current User
 const deleteUser = (req, res) => {
-    db.User.deleteOne({ User: req.params.user }, (err) => {
-        if(err) return console.log(err);
+    db.User.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
+        if (err) console.log(err);
         res.json({
-            status: 200,
-            message: 'Being Processed'
+          status: 200, 
+          data: deletedUser,
+          requestedAt: new Date().toLocaleString()
         });
     });
 };

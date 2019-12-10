@@ -5,7 +5,7 @@ const ctrl = require('../controllers')
 //PATH = /api/v1/users
 
 //add users
-router.post('/:userId', ctrl.users.addUser);
+router.post('/', ctrl.users.addUser);
 //GET Profile by ID
 router.get('/:userId', ctrl.users.showUser);
 //Show all users
@@ -16,3 +16,5 @@ router.put('/:userId', ctrl.users.updateUser);
 router.delete('/:userId', ctrl.users.deleteUser);
 
 module.exports = router;
+
+

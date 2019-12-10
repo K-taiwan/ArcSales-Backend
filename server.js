@@ -47,4 +47,5 @@ app.use('/api/v1/cars', routes.cars);
 app.use('/api/v1/users', routes.users);
 // app.use('/api/v1/postcars', routes.postcars);
 
-app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`));
+// app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`));
+app.listen(process.env.PORT || 3000)

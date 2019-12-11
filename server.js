@@ -13,11 +13,11 @@ const routes = require('./routes');
 
 // CORS - Cross Origi Resource Sharing
 const corsOptions = {
-  origin: [`http://localhost:3000`],
+  origin: "https://arcsales-frontend.herokuapp.com",
   credentials: true, // allows the session cookie to be sent back and forth from server to client
   optionsSuccessStatus: 200 // some legacy browsers choke on satus 204
 };
-
+// Comment to commit
 app.use(cors(corsOptions));
 
 // BodyParser
@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 // Express Session 
 
 app.use(session({
-  store: new MongoStore({ url: process.env.MONGO_URI }),
+  store: new MongoStore({ url: process.env.MONGODB_URI }),
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false, 
@@ -47,4 +47,5 @@ app.use('/api/v1/cars', routes.cars);
 app.use('/api/v1/users', routes.users);
 // app.use('/api/v1/postcars', routes.postcars);
 
-app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`));
+// app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`));
+app.listen(process.env.PORT || 3000)

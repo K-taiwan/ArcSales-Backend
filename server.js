@@ -13,7 +13,7 @@ const routes = require('./routes');
 
 // CORS - Cross Origi Resource Sharing
 const corsOptions = {
-  origin: ['http://localhost:3000', "https://arcsales.herokuapp.com"],
+  origin: "https://arcsales.herokuapp.com",
   credentials: true, // allows the session cookie to be sent back and forth from server to client
   optionsSuccessStatus: 200 // some legacy browsers choke on satus 204
 };
